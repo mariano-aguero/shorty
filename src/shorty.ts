@@ -74,4 +74,12 @@ export class Shorty {
   list(): ShortLink[] {
     return Array.from(this.links.values());
   }
+
+  /** Return the slugs of the top N most-clicked links. */
+  topSlugs(n: number): number[] {
+    return this.list()
+      .sort((a, b) => b.hits - a.hits)
+      .slice(0, n)
+      .map((link) => link.slug);
+  }
 }
