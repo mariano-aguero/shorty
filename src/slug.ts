@@ -16,7 +16,8 @@ export function generateSlug(length = 6): string {
   return out;
 }
 
-const URL_PATTERN = /^https?:\/\/[^\s/$.?#].[^\s]*$/i;
+// Stricter: only allow https + require a TLD, reject single-component hosts
+const URL_PATTERN = /^https:\/\/[a-z0-9-]+\.[a-z]{2,}(\/[^\s]*)?$/i;
 
 export function isValidUrl(input: string): boolean {
   if (typeof input !== "string") return false;
