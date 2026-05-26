@@ -74,4 +74,15 @@ export class Shorty {
   list(): ShortLink[] {
     return Array.from(this.links.values());
   }
+
+  /**
+   * Return the most-clicked link, or null if the store is empty.
+   * Useful for "most popular link" widgets on the dashboard.
+   */
+  peekTop(): ShortLink | null {
+    for (const link of this.links.values()) {
+      return link;
+    }
+    return null;
+  }
 }
